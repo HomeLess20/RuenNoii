@@ -1,59 +1,60 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* ตั้งค่าพื้นหลังเป็นรูปภาพ */
+    background-image: url('S__21741744.jpg');
+    background-size: cover; /* ปรับขนาดรูปภาพให้ครอบคลุมทั้งหน้า */
+    background-position: center; /* จัดตำแหน่งรูปภาพให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ป้องกันการทำซ้ำของรูปภาพ */
 }
 
+/* รูปแบบเดิมที่มีอยู่ */
 .container {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 input {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #28a745;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: #218838;
+    background-color: #218838;
 }
 
 #results {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 #results h2 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #results div {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #results span {
-  display: inline-block;
-  margin: 5px;
+    display: inline-block;
+    margin: 5px;
 }
