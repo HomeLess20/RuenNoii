@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // ฟังก์ชันสำหรับป้องกันการเปิด Developer Tools
+  function preventDevTools() {
+    document.onkeydown = function(e) {
+      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+        return false;
+      }
+    };
+  }
+
+  // เรียกใช้งานฟังก์ชันป้องกัน
+  preventDevTools();
+
+  // โค้ดเดิมของคุณ
   document.getElementById('winform').addEventListener('submit', function(event) {
     event.preventDefault();
     const input = document.getElementById('numbers').value.trim();
