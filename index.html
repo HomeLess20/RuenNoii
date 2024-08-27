@@ -1,189 +1,199 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ล็อกอิน</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-
-        .login-container, .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        input {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #28a745;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-
-        .container {
-            display: none;
-        }
-    </style>
+    <title>เว็บวิน บ้านเรือนน้อย</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>ล็อกอิน</h1>
-        <input type="password" id="password" placeholder="ใส่รหัสผ่าน">
-        <button id="loginButton">เข้าสู่ระบบ</button>
-        <p id="error-message" style="color:red; display:none;">รหัสผ่านไม่ถูกต้อง</p>
+   <!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>วินเลข</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .login-container,
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .container {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <h1>บ้านเรือนน้อย</h1>
+    <input type="password" id="password" placeholder="ใส่รหัสผ่าน">
+    <button id="loginButton">เข้าสู่ระบบ</button>
+    <p id="error-message" style="color:red; display:none;">รหัสผ่านไม่ถูกต้อง</p>
+  </div>
+
+  <div class="container">
+    <h1>เลขวิน</h1>
+    <form id="winform">
+      <label for="numbers">กรอกตัวเลข (ไม่เกิน 8 ตัวเลขต่อกันโดยไม่เว้นวรรค):</label>
+      <input type="text" id="numbers" name="numbers" placeholder="เช่น 12345678">
+      <button type="submit">คำนวณ</button>
+      <button type="button" id="resetButton">เริ่มใหม่</button>
+    </form>
+    <div id="results">
+      <h2>ผลลัพธ์:</h2>
+      <div id="pair2">
+        <h3>เลขวิน 2 ตัว</h3>
+        <div id="pair2Results"></div>
+        <button onclick="copyToClipboard('pair2Results', this)">คัดลอก</button>
+      </div>
+      <div id="pair3">
+        <h3>เลขวิน 3 ตัว</h3>
+        <div id="pair3Results"></div>
+        <button onclick="copyToClipboard('pair3Results', this)">คัดลอก</button>
+      </div>
+      <div id="pair2Double">
+        <h3>เลขวิน 2 ตัว รวมเลขเบิ้ล</h3>
+        <div id="pair2DoubleResults"></div>
+        <button onclick="copyToClipboard('pair2DoubleResults', this)">คัดลอก</button>
+      </div>
+      <div id="pair3Double">
+        <h3>เลขวิน 3 ตัว รวมเลขเบิ้ล</h3>
+        <div id="pair3DoubleResults"></div>
+        <button onclick="copyToClipboard('pair3DoubleResults', this)">คัดลอก</button>
+      </div>
     </div>
+  </div>
 
-    <div class="container">
-        <h1>เลขวิน</h1>
-        <form id="winform">
-            <label for="numbers">กรอกตัวเลข (ไม่เกิน 8 ตัวเลขต่อกันโดยไม่เว้นวรรค):</label>
-            <input type="text" id="numbers" name="numbers" placeholder="เช่น 12345678">
-            <button type="submit">คำนวณ</button>
-            <button type="button" id="resetButton">เริ่มใหม่</button>
-        </form>
-        <div id="results">
-            <h2>ผลลัพธ์:</h2>
-            <div id="pair2">
-                <h3>เลขวิน 2 ตัว</h3>
-                <div id="pair2Results"></div>
-                <button onclick="copyToClipboard('pair2Results', this)">คัดลอก</button>
-            </div>
-            <div id="pair3">
-                <h3>เลขวิน 3 ตัว</h3>
-                <div id="pair3Results"></div>
-                <button onclick="copyToClipboard('pair3Results', this)">คัดลอก</button>
-            </div>
-            <div id="pair2Double">
-                <h3>เลขวิน 2 ตัว รวมเลขเบิ้ล</h3>
-                <div id="pair2DoubleResults"></div>
-                <button onclick="copyToClipboard('pair2DoubleResults', this)">คัดลอก</button>
-            </div>
-            <div id="pair3Double">
-                <h3>เลขวิน 3 ตัว รวมเลขเบิ้ล</h3>
-                <div id="pair3DoubleResults"></div>
-                <button onclick="copyToClipboard('pair3DoubleResults', this)">คัดลอก</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const correctPassword = 'noii55';
-
-            document.getElementById('loginButton').addEventListener('click', function() {
-                const inputPassword = document.getElementById('password').value;
-                if (inputPassword === correctPassword) {
-                    document.querySelector('.login-container').style.display = 'none';
-                    document.querySelector('.container').style.display = 'block';
-                } else {
-                    document.getElementById('error-message').style.display = 'block';
-                }
-            });
-
-            document.getElementById('winform').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const input = document.getElementById('numbers').value.trim();
-                if (input.length < 1 || input.length > 8 || !/^\d+$/.test(input)) {
-                    alert('กรุณากรอกเลขไม่เกิน 8 ตัวที่เป็นตัวเลขเท่านั้น');
-                    return;
-                }
-
-                const numbers = input.split('');
-                const pair2 = generateCombinations(numbers, 2);
-                const pair2Double = generateCombinationsWithDoubles(numbers, 2);
-                const pair3 = generateCombinations(numbers, 3);
-                const pair3Double = generateCombinationsWithDoubles(numbers, 3);
-
-                displayResults(pair2, 'pair2Results');
-                displayResults(pair3, 'pair3Results');
-                displayResults(pair2Double, 'pair2DoubleResults');
-                displayResults(pair3Double, 'pair3DoubleResults');
-
-                document.getElementById('results').style.display = 'block';
-            });
-
-            document.getElementById('resetButton').addEventListener('click', function() {
-                document.getElementById('winform').reset();
-                document.getElementById('results').style.display = 'none';
-                document.getElementById('pair2Results').innerHTML = '';
-                document.getElementById('pair3Results').innerHTML = '';
-                document.getElementById('pair2DoubleResults').innerHTML = '';
-                document.getElementById('pair3DoubleResults').innerHTML = '';
-            });
-        });
-
-        function generateCombinations(arr, size) {
-            const result = [];
-            const f = (prefix, arr, size) => {
-                if (prefix.length === size) {
-                    result.push(prefix);
-                    return;
-                }
-                for (let i = 0; i < arr.length; i++) {
-                    f(prefix + arr[i], arr.slice(i + 1), size);
-                }
-            };
-            f('', arr, size);
-            return result;
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const correctPassword = 'noii55';
+      document.getElementById('loginButton').addEventListener('click', function() {
+        const inputPassword = document.getElementById('password').value;
+        if (inputPassword === correctPassword) {
+          document.querySelector('.login-container').style.display = 'none';
+          document.querySelector('.container').style.display = 'block';
+        } else {
+          document.getElementById('error-message').style.display = 'block';
         }
-
-        function generateCombinationsWithDoubles(arr, size) {
-            const result = [];
-            const f = (prefix, arr, size) => {
-                if (prefix.length === size) {
-                    result.push(prefix);
-                    return;
-                }
-                for (let i = 0; i < arr.length; i++) {
-                    if (prefix.length === 0 || arr[i] >= prefix.charAt(prefix.length - 1)) {
-                        f(prefix + arr[i], arr, size);
-                    }
-                }
-            };
-            f('', arr, size);
-            return result;
+      });
+      document.getElementById('winform').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const input = document.getElementById('numbers').value.trim();
+        if (input.length < 1 || input.length > 8 || !/^\d+$/.test(input)) {
+          alert('กรุณากรอกเลขไม่เกิน 8 ตัวที่เป็นตัวเลขเท่านั้น');
+          return;
         }
+        const numbers = input.split('');
+        const pair2 = generateCombinations(numbers, 2);
+        const pair2Double = generateCombinationsWithDoubles(numbers, 2);
+        const pair3 = generateCombinations(numbers, 3);
+        const pair3Double = generateCombinationsWithDoubles(numbers, 3);
+        displayResults(pair2, 'pair2Results');
+        displayResults(pair3, 'pair3Results');
+        displayResults(pair2Double, 'pair2DoubleResults');
+        displayResults(pair3Double, 'pair3DoubleResults');
+        document.getElementById('results').style.display = 'block';
+      });
+      document.getElementById('resetButton').addEventListener('click', function() {
+        document.getElementById('winform').reset();
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('pair2Results').innerHTML = '';
+        document.getElementById('pair3Results').innerHTML = '';
+        document.getElementById('pair2DoubleResults').innerHTML = '';
+        document.getElementById('pair3DoubleResults').innerHTML = '';
+      });
+    });
 
-        function displayResults(pairs, elementId) {
-            const element = document.getElementById(elementId);
-            element.innerHTML = pairs.map(pair => `<span>${pair}</span>`).join(' ');
+    function generateCombinations(arr, size) {
+      const result = [];
+      const f = (prefix, arr, size) => {
+        if (prefix.length === size) {
+          result.push(prefix);
+          return;
         }
+        for (let i = 0; i < arr.length; i++) {
+          f(prefix + arr[i], arr.slice(i + 1), size);
+        }
+      };
+      f('', arr, size);
+      return result;
+    }
 
-        function copyToClipboard(elementId, button) {
-            const element = document.getElementById(elementId);
-            const text = element.innerText.replace(/\s+/g, ' ');
-            navigator.clipboard.writeText(text).then(() => {
-                button.innerText = 'คัดลอกสำเร็จ';
-                setTimeout(() => {
-                    button.innerText = 'คัดลอก';
-                }, 2000); // เปลี่ยนกลับเป็น "คัดลอก" หลังจาก 2 วินาที
-            });
+    function generateCombinationsWithDoubles(arr, size) {
+      const result = [];
+      const f = (prefix, arr, size) => {
+        if (prefix.length === size) {
+          result.push(prefix);
+          return;
         }
-    </script>
+        for (let i = 0; i < arr.length; i++) {
+          if (prefix.length === 0 || arr[i] >= prefix.charAt(prefix.length - 1)) {
+            f(prefix + arr[i], arr, size);
+          }
+        }
+      };
+      f('', arr, size);
+      return result;
+    }
+
+    function displayResults(pairs, elementId) {
+      const element = document.getElementById(elementId);
+      element.innerHTML = pairs.map(pair => <span>${pair}</span>).join(' ');
+    }
+
+    function copyToClipboard(elementId, button) {
+      const element = document.getElementById(elementId);
+      const text = element.innerText.replace(/\s+/g, ' ');
+      navigator.clipboard.writeText(text).then(() => {
+        button.innerText = 'คัดลอกสำเร็จ';
+        setTimeout(() => {
+          button.innerText = 'คัดลอก';
+        }, 2000); // เปลี่ยนกลับเป็น "คัดลอก" หลังจาก 2 วินาที
+      });
+    }
+  </script>
 </body>
+
+</html>
+</body>
+<script src="script.js"></script>
 </html>
