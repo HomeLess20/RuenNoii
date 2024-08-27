@@ -30,6 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('pair3Results').innerHTML = '';
     document.getElementById('pair3DoubleResults').innerHTML = '';
   });
+
+  // ป้องกันการเปิด Developer Tools
+  function detectDevTools() {
+    const element = new Image();
+    element.__defineGetter__('id', function() {
+      alert('กรุณาปิด Developer Tools เพื่อใช้งานเว็บไซต์นี้');
+      window.location.href = 'about:blank'; // หรือคุณอาจเปลี่ยนไปยังหน้าอื่น
+    });
+    console.log(element);
+  }
+
+  setInterval(detectDevTools, 1000);
 });
 
 function generateCombinations(arr, size) {
