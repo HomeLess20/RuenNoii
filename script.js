@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   inputElement.addEventListener('input', function() {
     const input = inputElement.value.trim();
     if (input.length > 8 || !/^\d*$/.test(input)) {
-      alert('กรุณากรอกเลขไม่เกิน 8 ตัวที่เป็นตัวเลขเท่านั้น');
+      // Clear results if invalid input
+      document.getElementById('results').style.display = 'none';
       return;
     }
 
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('pair3DoubleResults').innerHTML = '';
   });
 
-  // ป้องกันการเปิด Developer Tools
+  // Optional: Detect if Developer Tools is opened
   function detectDevTools() {
     const element = new Image();
     element.__defineGetter__('id', function() {
@@ -41,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(element);
   }
 
-  setInterval(detectDevTools, 1000);
+  // Optional: Uncomment this if you want to check Developer Tools detection
+  // setInterval(detectDevTools, 1000);
 });
 
 function generateCombinations(arr, size) {
