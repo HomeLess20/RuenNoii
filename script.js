@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const inputElement = document.getElementById('numbers');
-
-  inputElement.addEventListener('input', function() {
-    const input = inputElement.value.trim();
-    if (input.length > 8 || !/^\d*$/.test(input)) {
+  document.getElementById('winform').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const input = document.getElementById('numbers').value.trim();
+    if (input.length < 1 || input.length > 8 || !/^\d+$/.test(input)) {
       alert('กรุณากรอกเลขไม่เกิน 8 ตัวที่เป็นตัวเลขเท่านั้น');
       return;
     }
@@ -30,18 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('pair3Results').innerHTML = '';
     document.getElementById('pair3DoubleResults').innerHTML = '';
   });
-
-  // ป้องกันการเปิด Developer Tools
-  function detectDevTools() {
-    const element = new Image();
-    element.__defineGetter__('id', function() {
-      alert('กรุณาปิด Developer Tools เพื่อใช้งานเว็บไซต์นี้');
-      window.location.href = 'about:blank'; // หรือคุณอาจเปลี่ยนไปยังหน้าอื่น
-    });
-    console.log(element);
-  }
-
-  setInterval(detectDevTools, 1000);
 });
 
 function generateCombinations(arr, size) {
@@ -78,7 +65,7 @@ function generateCombinationsWithDoubles(arr, size) {
 
 function displayResults(pairs, elementId) {
   const element = document.getElementById(elementId);
-  element.innerHTML = pairs.map(pair => `<span>${pair}</span>`).join(' ') + ` (รวม ${pairs.length} ชุด)`;
+  element.innerHTML = pairs.map(pair => <span>${pair}</span>).join(' ') +  (รวม ${pairs.length} ชุด);
 }
 
 function copyToClipboard(elementId, button) {
