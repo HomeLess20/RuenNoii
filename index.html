@@ -177,7 +177,7 @@
 
     function displayResults(pairs, elementId) {
       const element = document.getElementById(elementId);
-      element.innerHTML = pairs.map(pair => <span>${pair}</span>).join(' ');
+      element.innerHTML = pairs.map(pair => `<span>${pair}</span>`).join(' ');
     }
 
     function copyToClipboard(elementId, button) {
