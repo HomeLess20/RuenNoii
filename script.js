@@ -1,21 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // ฟังก์ชันสำหรับป้องกันการเปิด Developer Tools
-  function preventDevTools() {
-    document.onkeydown = function(e) {
-      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-        return false;
-      }
-    };
-  }
+  const inputElement = document.getElementById('numbers');
 
-  // เรียกใช้งานฟังก์ชันป้องกัน
-  preventDevTools();
-
-  // โค้ดเดิมของคุณ
-  document.getElementById('winform').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const input = document.getElementById('numbers').value.trim();
-    if (input.length < 1 || input.length > 8 || !/^\d+$/.test(input)) {
+  inputElement.addEventListener('input', function() {
+    const input = inputElement.value.trim();
+    if (input.length > 8 || !/^\d*$/.test(input)) {
       alert('กรุณากรอกเลขไม่เกิน 8 ตัวที่เป็นตัวเลขเท่านั้น');
       return;
     }
@@ -42,6 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('pair3Results').innerHTML = '';
     document.getElementById('pair3DoubleResults').innerHTML = '';
   });
+
+  // ป้องกันการเปิด Developer Tools
+  function detectDevTools() {
+    const element = new Image();
+    element.__defineGetter__('id', function() {
+      alert('กรุณาปิด Developer Tools เพื่อใช้งานเว็บไซต์นี้');
+      window.location.href = 'about:blank'; // หรือคุณอาจเปลี่ยนไปยังหน้าอื่น
+    });
+    console.log(element);
+  }
+
+  setInterval(detectDevTools, 1000);
 });
 
 function generateCombinations(arr, size) {
