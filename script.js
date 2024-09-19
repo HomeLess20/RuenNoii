@@ -91,3 +91,18 @@ function copyToClipboard(elementId, button) {
     }, 2000);
   });
 }
+
+// ป้องกันการกด F12 และเปิด Developer Tools
+document.addEventListener("keydown", function(event) {
+    // ตรวจจับการกด F12
+    if (event.key === "F12") {
+        event.preventDefault(); // ป้องกัน F12
+        alert("การตรวจสอบโค้ดถูกป้องกัน");
+    }
+    
+    // ตรวจจับการกด Ctrl+Shift+I (เปิดเครื่องมือ Inspect)
+    if (event.ctrlKey && event.shiftKey && event.key === "I") {
+        event.preventDefault();
+        alert("การตรวจสอบโค้ดถูกป้องกัน");
+    }
+});
